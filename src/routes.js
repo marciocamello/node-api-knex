@@ -10,8 +10,9 @@ routes.get('/', (req, res) => {
 })
 
 routes.get('/users', UserController.index)
-routes.post('/users', UserValidation.signup, UserController.store)
-routes.put('/users/:user', UserController.update)
-routes.delete('/users/:user', UserController.delete)
+routes.get('/users/:id', UserValidation.show, UserController.show)
+routes.post('/users', UserValidation.store, UserController.store)
+routes.put('/users/:id', UserController.update)
+routes.delete('/users/:id', UserController.delete)
 
 export default routes

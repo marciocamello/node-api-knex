@@ -1,6 +1,6 @@
 import validator from '../helpers/validate'
 
-const signup = (req, res, next) => {
+const store = (req, res, next) => {
   const validationRule = {
     email: 'required|email',
     firstName: 'required|string',
@@ -22,6 +22,26 @@ const signup = (req, res, next) => {
   })
 }
 
+const show = (req, res, next) => {
+  const validationRule = {
+    id: 'required|integer'
+  }
+
+  validator(req.params, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412)
+        .send({
+          success: false,
+          message: 'Validation failed',
+          data: err
+        })
+    } else {
+      next()
+    }
+  })
+}
+
 export default {
-  signup
+  store,
+  show
 }

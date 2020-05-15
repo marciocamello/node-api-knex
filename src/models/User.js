@@ -5,16 +5,27 @@ class User {
     return await db('users')
   }
 
+  async show (id) {
+    return await db('users')
+      .where('id', id)
+      .first()
+  }
+
   async save (data) {
-
+    return await db('users')
+      .insert(data)
   }
 
-  async update (user) {
-
+  async update (id, data) {
+    return await db('users')
+      .where('id', id)
+      .update(data)
   }
 
-  async delete (user) {
-
+  async delete (id) {
+    return await db('users')
+      .where('id', id)
+      .del()
   }
 }
 
