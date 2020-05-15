@@ -1,6 +1,6 @@
 # Node API
 
-::rocket:: Technologies
+:rocket: Technologies
 
 - ExpressJS
 - Knex
