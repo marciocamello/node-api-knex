@@ -1,6 +1,0 @@
-apps:
-  - name     : 'node-api'
-    script   : ./dist/c.js
-    watch: true
-    env    :
-      NODE_ENV: development
