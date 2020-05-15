@@ -1,9 +1,9 @@
-import db from '../database'
+import User from '../models/User'
 
 class UserController {
   async index (req, res) {
     try {
-      const users = await db('users')
+      const users = await User.list()
       return res.json(users)
     } catch (e) {
       return res.json({ error: e })
