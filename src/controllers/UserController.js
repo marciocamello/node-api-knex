@@ -12,10 +12,10 @@ class UserController {
 
   async store (req, res) {
     try {
-      const users = await User.save(req.body)
+      const user = await User.save(req.body)
       return res.json({
-        message: 'User list',
-        result: users
+        message: 'User saved',
+        result: user
       })
     } catch (e) {
       return res.json({ error: e })

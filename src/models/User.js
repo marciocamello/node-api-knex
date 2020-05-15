@@ -1,6 +1,10 @@
 import db from '../database'
+import Model from './Model'
+import bcrypt from 'bcryptjs'
+import { secrets } from '../config/secret'
+import * as jwt from 'jsonwebtoken'
 
-class User {
+class User extends Model {
   async list () {
     return await db('users')
   }
@@ -12,6 +16,8 @@ class User {
   }
 
   async save (data) {
+    data.password = await bcrypt.hash(data.password, 8)
+
     return await db('users')
       .insert(data)
   }
@@ -27,6 +33,12 @@ class User {
       .where('id', id)
       .del()
   }
+
+  async generateToken (payload) {
+    return jwt.sign({ id: payload.id }, secrets.JWT_SECRET, {
+      expiresIn: 86400
+    })
+  }
 }
 
-export default new User()
+export default new User('users')
