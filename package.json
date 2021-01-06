@@ -27,7 +27,7 @@
     "build": "sucrase ./src -d ./dist --transforms imports"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
